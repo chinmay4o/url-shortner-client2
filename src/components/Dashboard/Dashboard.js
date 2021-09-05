@@ -26,8 +26,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
   //======== authenticating user ========
   async function authenticate1() {
     try {
-      const response = await fetch(
-        "https://urlshortner4o2.herokuapp.com/dashboard",
+      const response = await fetch( "https://urlshortner4o2.herokuapp.com/dashboard",
         {
           method: "GET",
           headers: {
@@ -48,8 +47,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
         const error = new Error(response.error);
         throw error;
       } else {
-        console.log("auth from dashboard");
-        // history.push("/dashboard");
+        console.log("success auth from dashboard");
       }
     } catch (err) {
       console.log(err);
@@ -109,7 +107,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
     authenticate1();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (userData.email === false) {
+  if (!userData.email) {
     return (
       <div className="dashboard-parent">
         {" "}

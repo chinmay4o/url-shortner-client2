@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import "./about.css";
 import { useSelector, useDispatch } from "react-redux";
 import { rootUser1 } from "../../actions/index.js";
-import "react-toastify/dist/ReactToastify.css";
-// import { ToastContainer, toast } from "react-toastify";
 import about from "../images/about.svg";
 
 const About = ({ userData, setUserData, data1 }) => {
@@ -35,7 +33,6 @@ const About = ({ userData, setUserData, data1 }) => {
         throw error;
       } else {
         console.log("auth from about")
-        // notify();
       }
     } catch (err) {
       console.log(err);
@@ -74,7 +71,6 @@ const About = ({ userData, setUserData, data1 }) => {
     <div className="about-parent">
       <div className="about">
         <div className="about-div1">
-          {/* <ToastContainer /> */}
           {console.log(rootUser)}
           <h3>Welcome {rootUser ? rootUser.name : <h2> Loading...</h2>}</h3>
           <div className="row about-links">

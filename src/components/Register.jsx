@@ -1,51 +1,26 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const [info, setInfo] = useState({
     email: "",
     password: "",
   });
-  //  usehistory
 
+  //usehistory
   const history = useHistory();
 
-  // react toastify
-  const notify = () => {
-    toast("signup successfull", {
-      position: "bottom-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-  const notify1 = (err) => {
-    toast(err, {
-      position: "bottom-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-
+  // onclick handler
   async function registerUser(e) {
     e.preventDefault();
     var tester =
       /^[-!#$%&'*+0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
     if (!info.email || !info.password) {
-      return notify1("Please fill in the details");
+      return alert("Please fill in the details");
     } else if (!tester.test(info.email)) {
-      return notify1("Please provide valid email address");
+      return alert("Please provide valid email address");
     } else if (info.password.length < 6) {
-      return notify1("password must be 6 characters long");
+      return alert("password must be 6 characters long");
     } else {
       const response = await fetch(
         "https://urlshortner4o2.herokuapp.com/register",
@@ -58,10 +33,9 @@ const Register = () => {
 
       if (response.status !== 200) {
         const err = await response.json();
-
-        notify1(err.message);
+        console.log(err.message);
       } else {
-        notify();
+        console.log("success registerUser");
         history.push("/login");
       }
     }
@@ -69,17 +43,6 @@ const Register = () => {
 
   return (
     <div className="parent">
-      <ToastContainer
-        position="bottom-right"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div className="container shadow p-5 form1">
         <h2 className="mb-5">Register Here</h2>
         <form>

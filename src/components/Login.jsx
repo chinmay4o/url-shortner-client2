@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 
 const Login = ({userData , setUserData}) => {
@@ -12,31 +9,6 @@ const Login = ({userData , setUserData}) => {
     email: "",
     password: "",
   });
-
-  // ======= react toastify ========
-  // ======= react toastify ========
-  const notify = () => {
-    toast("login successfull", {
-      position: "bottom-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-  const notify1 = (err) => {
-    toast(err, {
-      position: "bottom-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
 
 // ========== user Login ===========
 // ========== user Login ===========
@@ -49,30 +21,21 @@ const Login = ({userData , setUserData}) => {
       credentials: "include",
     });
 
+    const data = await response.json();
+     
+    console.log(data);
+    
     if (response.status !== 200) {
-      notify1("invalid details");
+      console.log("invalid details");
     } else {
-      // auth1();
-      notify();
+      console.log("success details login");
       history.push("/dashboard");
-
     }
   }
   
 
   return (
     <div className="parent">
-      <ToastContainer
-        position="bottom-right"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div className="container shadow form1">
         <h2 className="mb-5">Login Here</h2>
         <form>
