@@ -27,7 +27,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
   async function authenticate1() {
     try {
       const response = await fetch(
-        "https://url-shortner4o.herokuapp.com/dashboard",
+        "https://urlshortner4o2.herokuapp.com/dashboard",
         {
           method: "GET",
           headers: {
@@ -62,7 +62,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
   async function urlShortner(e) {
     e.preventDefault();
     const response = await fetch(
-      "https://url-shortner4o.herokuapp.com/shorten",
+      "https://urlshortner4o2.herokuapp.com/shorten",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -86,7 +86,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
   // patch request to update user profile
   async function updateUserProfile(dd) {
     const response = await fetch(
-      "https://url-shortner4o.herokuapp.com/updates",
+      "https://urlshortner4o2.herokuapp.com/updates",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

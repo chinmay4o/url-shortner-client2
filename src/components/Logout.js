@@ -17,7 +17,7 @@ const Logout = () => {
   async function logoutUser(e) {
     e.preventDefault();
     const response = await fetch(
-      "https://url-shortner4o.herokuapp.com/logout",
+      "https://urlshortner4o2.herokuapp.com/logout",
       {
         method: "POST",
         headers: {

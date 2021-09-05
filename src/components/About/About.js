@@ -15,7 +15,7 @@ const About = ({ userData, setUserData, data1 }) => {
   const dispatch = useDispatch();
   async function auth1() {
     try {
-      const res = await fetch("https://url-shortner4o.herokuapp.com/about", {
+      const res = await fetch("https://urlshortner4o2.herokuapp.com/about", {
         method: "GET",
         headers: {
           Accept: "application/json",

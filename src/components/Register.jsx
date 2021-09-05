@@ -48,7 +48,7 @@ const Register = () => {
       return notify1("password must be 6 characters long");
     } else {
       const response = await fetch(
-        "https://url-shortner4o.herokuapp.com/register",
+        "https://urlshortner4o2.herokuapp.com/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@ const Register = () => {
         <h2 className="mb-5">Register Here</h2>
         <form>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
@@ -99,7 +99,7 @@ const Register = () => {
             </div>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input

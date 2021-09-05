@@ -1,3 +1,5 @@
+ /* eslint-disable */
+
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,7 +21,7 @@ const Contact = () => {
 
   async function sendMail(e) {
     e.preventDefault();
-    const response = await fetch("https://url-shortner4o.herokuapp.com/contact", {
+    const response = await fetch("https://urlshortner4o2.herokuapp.com/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(info),
@@ -39,7 +41,7 @@ const Contact = () => {
         <h2 className="mb-4">Contact Us</h2>
         <form>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <div className="form-floating">
