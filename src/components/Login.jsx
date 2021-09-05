@@ -4,7 +4,8 @@ import { useHistory, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Login = () => {
+
+const Login = ({userData , setUserData}) => {
   const history = useHistory();
 
   const [info, setInfo] = useState({
@@ -12,7 +13,8 @@ const Login = () => {
     password: "",
   });
 
-  // react toastify
+  // ======= react toastify ========
+  // ======= react toastify ========
   const notify = () => {
     toast("login successfull", {
       position: "bottom-right",
@@ -36,23 +38,27 @@ const Login = () => {
     });
   };
 
+// ========== user Login ===========
+// ========== user Login ===========
   async function userLogin(e) {
     e.preventDefault();
     const response = await fetch("https://url-shortner4o.herokuapp.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(info),
-      // mode: "cors",
       credentials: "include",
     });
 
     if (response.status !== 200) {
       notify1("invalid details");
     } else {
+      // auth1();
       notify();
       history.push("/dashboard");
+
     }
   }
+  
 
   return (
     <div className="parent">

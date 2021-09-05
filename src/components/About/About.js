@@ -8,12 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import about from "../images/about.svg";
 
 const About = ({ userData, setUserData, data1 }) => {
-  ///notify user
-  // function notify() {
-  //   return toast("user Authenticated");
-  // }
-  // const [userData , setUserData] = useState({});
   const history = useHistory();
+  
   //redux mystate
   const rootUser = useSelector((state) => state.changeUser);
   const dispatch = useDispatch();

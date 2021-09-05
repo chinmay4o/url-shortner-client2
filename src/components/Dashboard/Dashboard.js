@@ -22,29 +22,42 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
       progress: undefined,
     });
 
-  //authenticating user
+  //======== authenticating user ========
+  //======== authenticating user ========
   async function authenticate1() {
-    const response = await fetch(
-      "https://url-shortner4o.herokuapp.com/dashboard",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        credentials: "include",
-      }
-    );
+    try {
+      const response = await fetch(
+        "https://url-shortner4o.herokuapp.com/dashboard",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
-    if (response.status === 200) {
-      const user = await response.json();
-      console.log(user);
-      //  notify1();
-    } else {
+      const data = await response.json();
+
+      setUserData({ ...data });
+      console.log(userData);
+      console.log(data1);
+
+      if (response.status !== 200) {
+        const error = new Error(response.error);
+        throw error;
+      } else {
+        console.log("auth from dashboard");
+        // history.push("/dashboard");
+      }
+    } catch (err) {
+      console.log(err);
       history.push("/login");
     }
   }
 
+  //on submit handler creating url short link
   //on submit handler creating url short link
   async function urlShortner(e) {
     e.preventDefault();
@@ -69,6 +82,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
     notify();
   }
 
+  // patch request to update user profile
   // patch request to update user profile
   async function updateUserProfile(dd) {
     const response = await fetch(
@@ -95,56 +109,65 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
     authenticate1();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
-    <div className="dashboard-parent">
-      <div className="dashboard">
-        <div className="dashboard-div1">
-          <h2 className="mb-5">Shorten your URL</h2>
-          <form className="dashboard-form">
-            <div>
-              <label for="exampleInputEmail1" className="form-label">
-                Paste your URL
-              </label>
-              <input
-                type="text"
-                className="form-control input-bor"
-                placeholder="put your URl here"
-                id="exampleInputEmail1"
-                onChange={(e) => setLongUrl(e.target.value)}
+  if (userData.email === false) {
+    return (
+      <div className="dashboard-parent">
+        {" "}
+        <h1>Loading...</h1>{" "}
+      </div>
+    );
+  } else {
+    return (
+      <div className="dashboard-parent">
+        <div className="dashboard">
+          <div className="dashboard-div1">
+            <h2 className="mb-5">Shorten your URL</h2>
+            <form className="dashboard-form">
+              <div>
+                <label for="exampleInputEmail1" className="form-label">
+                  Paste your URL
+                </label>
+                <input
+                  type="text"
+                  className="form-control input-bor"
+                  placeholder="put your URl here"
+                  id="exampleInputEmail1"
+                  onChange={(e) => setLongUrl(e.target.value)}
+                />
+              </div>
+              {/* providing data to screen shortuurl  */}
+              <div className="resultUrl" style={{ display: show }}>
+                <p>{data1 ? data1.shortUrl : "chinmay"}</p>
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary btn1"
+                onClick={urlShortner}
+              >
+                shorten
+              </button>
+              <ToastContainer
+                position="bottom-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
               />
-            </div>
-            {/* providing data to screen shortuurl  */}
-            <div className="resultUrl" style={{ display: show }}>
-              <p>{data1 ? data1.shortUrl : "chinmay"}</p>
-            </div>
+            </form>
+          </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary btn1"
-              onClick={urlShortner}
-            >
-              shorten
-            </button>
-            <ToastContainer
-              position="bottom-right"
-              autoClose={1500}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
-          </form>
-        </div>
-
-        <div className="dashboard-div2">
-          <img src={dash} alt="hero" className="mt-5" />
+          <div className="dashboard-div2">
+            <img src={dash} alt="hero" className="mt-5" />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Dashboard;
