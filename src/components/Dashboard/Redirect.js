@@ -7,7 +7,7 @@ const {code} = useParams();
 
 async function redirect1() {
     console.log(code);
-    const response = await fetch(`https://url-shortner4o2.herokuapp.com/${code}` , {
+    const response = await fetch(`https://urlshortner4o2.herokuapp.com/${code}` , {
         method : "GET", 
     });
 
