@@ -111,7 +111,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
     return (
       <div className="dashboard-parent">
         {" "}
-        <h1>Loading...</h1>{" "}
+        <h1 className="fw-bold">Loading...</h1>{" "}
       </div>
     );
   } else {

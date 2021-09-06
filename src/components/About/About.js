@@ -7,7 +7,7 @@ import about from "../images/about.svg";
 
 const About = ({ userData, setUserData, data1 }) => {
   const history = useHistory();
-  
+
   //redux mystate
   const rootUser = useSelector((state) => state.changeUser);
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const About = ({ userData, setUserData, data1 }) => {
         const error = new Error(res.error);
         throw error;
       } else {
-        console.log("auth from about")
+        console.log("auth from about");
       }
     } catch (err) {
       console.log(err);
@@ -67,28 +67,37 @@ const About = ({ userData, setUserData, data1 }) => {
     auth1();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
-    <div className="about-parent">
-      <div className="about">
-        <div className="about-div1">
-          {console.log(rootUser)}
-          <h3>Welcome {rootUser ? rootUser.name : <h2> Loading...</h2>}</h3>
-          <div className="row about-links">
-            <ol className="col-12 ">
-              <h6 className="fw-bold fs-5">Find your previous urls here</h6>
-              {rootUser.myUrls
-                ? rootUser.myUrls.map(printUserUrls)
-                : "No URLs available"}
-            </ol>
+  if (!userData.email) {
+    return (
+      <div className="dashboard-parent">
+        {" "}
+        <h1 className="fw-bold">Loading...</h1>{" "}
+      </div>
+    );
+  } else {
+    return (
+      <div className="about-parent">
+        <div className="about">
+          <div className="about-div1">
+            {console.log(rootUser)}
+            <h3>Welcome {rootUser ? rootUser.name : <h2> Loading...</h2>}</h3>
+            <div className="row about-links">
+              <ol className="col-12 ">
+                <h6 className="fw-bold fs-5">Find your previous urls here</h6>
+                {rootUser.myUrls
+                  ? rootUser.myUrls.map(printUserUrls)
+                  : "No URLs available"}
+              </ol>
+            </div>
+          </div>
+
+          <div className="about-div2">
+            <img src={about} alt="hero" />
           </div>
         </div>
-
-        <div className="about-div2">
-          <img src={about} alt="hero" />
-        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default About;
