@@ -8,6 +8,8 @@ Mongoose + MongoDB
 
 ## Functionalities -
 login, signup for users\
+Password hashing using bcrypt\
+Password reset with email\
 account page to find past activities\
 jwt authentication\
 Responsive design\

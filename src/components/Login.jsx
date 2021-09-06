@@ -26,6 +26,7 @@ const Login = ({userData , setUserData}) => {
     console.log(data);
     
     if (response.status !== 200) {
+      alert("Invalid details")
       console.log("invalid details");
     } else {
       console.log("success details login");
