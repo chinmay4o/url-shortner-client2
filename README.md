@@ -2,7 +2,7 @@
 Tech Stack -
 
 React\
-Express JS (https://github.com/chinmay4o/url-shortner-server) \
+Express JS (https://github.com/chinmay4o/url-shortner-server2) \
 Mongoose + MongoDB
 
 
@@ -22,4 +22,4 @@ account page with details
 User details edit section in settings section\
 Redux State management\
 Logout functionality\
-### https://urlshortner4o.netlify.app
+### https://urlshortner4o2.netlify.app
