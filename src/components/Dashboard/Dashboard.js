@@ -44,6 +44,7 @@ const Dashboard = ({ setUserData, userData, data1, setData1 }) => {
       console.log(data1);
 
       if (response.status !== 200) {
+        alert("unauthrised: Login to visit your dashboard");
         const error = new Error(response.error);
         throw error;
       } else {

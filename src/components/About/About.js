@@ -11,6 +11,7 @@ const About = ({ userData, setUserData, data1 }) => {
   //redux mystate
   const rootUser = useSelector((state) => state.changeUser);
   const dispatch = useDispatch();
+  //authenticate
   async function auth1() {
     try {
       const res = await fetch("https://urlshortner4o2.herokuapp.com/about", {
@@ -29,6 +30,7 @@ const About = ({ userData, setUserData, data1 }) => {
       console.log(data1);
 
       if (res.status !== 200) {
+        alert("unauthrised: Login to visit your account")
         const error = new Error(res.error);
         throw error;
       } else {
